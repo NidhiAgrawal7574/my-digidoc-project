@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Consultation</title>
+    <link rel="stylesheet" href="onconstyle.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Online Consultation</h1>
+        <p>Your health, one click away!</p>
+    </header>
+
+    <main class="main-container">
+        <section class="option">
+            <div class="icon">
+                <img src="video-call.webp" alt="Video Call" />
+            </div>
+            <h2>Video Call a Doctor</h2>
+            <p>Connect instantly with a doctor via video<br> call and get personalized advice.</p>
+            <button><a href="vidcall.html">Start Video Call</a></button>
+        </section>
+
+        <section class="option">
+            <div class="icon">
+                <img src="appointment.png" alt="Book Appointment" />
+            </div>
+            <h2>Book an Appointment</h2>
+            <p>Schedule an appointment with a <br>specialist at your convenience.</p>
+            <button><a href="bookappt.html">Book Appointment</a></button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Need help? <a href="#">Contact us</a> or call <strong>1-800-DOCTOR</strong>.</p>
+    </footer>
+
+    <script>
+        function startVideoCall() {
+            alert("Redirecting to video call...");
+            // Redirect or perform the action for video call
+            window.location.href = "video-call-page.html";
+        }
+
+        function bookAppointment() {
+            alert("Redirecting to appointment booking...");
+            // Redirect or perform the action for appointment booking
+            window.location.href = "appointment-page.html";
+        }
+    </script>
+</body>
+</html>

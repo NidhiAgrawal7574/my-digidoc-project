@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Booking</title>
+    <link rel="stylesheet" href="bookapptstyle.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Book Your Appointment</h1>
+        <p>Find the best doctors near you based on your needs.</p>
+    </header>
+
+    <main class="main-container">
+        <section class="search-bar">
+            <input type="text" id="location" placeholder="Enter your location" />
+            <input type="text" id="searchQuery" placeholder="Search by symptom, disease, or specialty" />
+            <button onclick="searchDoctors()">Search</button>
+        </section>
+
+        <section id="doctor-list" class="doctor-list">
+            <!-- Doctor cards will be dynamically generated here -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Need help? Contact us or call <strong>1-800-DOCTOR</strong>.</p>
+    </footer>
+
+    <script>
+        const doctors = [
+            { name: "Dr. Ramesh", specialty: "Cardiologist", location: "Vadodara", description: "Heart specialist with 10+ years of experience." },
+            { name: "Dr. Arpit", specialty: "Dermatologist", location: "Ahmedabad", description: "Expert in skin and hair treatments." },
+            { name: "Dr. Babban", specialty: "Pediatrician", location: "Surat", description: "Child specialist with a focus on preventive care." },
+            { name: "Dr. Chintan", specialty: "Orthopedic", location: "Rajkot", description: "Specialist in bone and joint care." },
+            { name: "Dr. Darshan", specialty: "ENT Specialist", location: "Anand", description: "Expert in ear, nose, and throat disorders." },
+            { name: "Dr. Ekta", specialty: "Cardiologist", location: "Vadodara", description: "Heart specialist with 10+ years of experience." },
+            { name: "Dr. Faizal", specialty: "Dermatologist", location: "Ahmedabad", description: "Expert in skin and hair treatments." },
+            { name: "Dr. Girish", specialty: "Pediatrician", location: "Surat", description: "Child specialist with a focus on preventive care." },
+            { name: "Dr. Harish", specialty: "Orthopedic", location: "Rajkot", description: "Specialist in bone and joint care." },
+            { name: "Dr. Imran", specialty: "ENT Specialist", location: "Anand", description: "Expert in ear, nose, and throat disorders." },
+            { name: "Dr. Jagdish", specialty: "Cardiologist", location: "Vadodara", description: "Heart specialist with 10+ years of experience." },
+            { name: "Dr. Kalpana", specialty: "Dermatologist", location: "Ahmedabad", description: "Expert in skin and hair treatments." },
+            { name: "Dr. Lalit", specialty: "Pediatrician", location: "Surat", description: "Child specialist with a focus on preventive care." },
+            { name: "Dr. Mohit", specialty: "Orthopedic", location: "Rajkot", description: "Specialist in bone and joint care." },
+            { name: "Dr. Naresh", specialty: "ENT Specialist", location: "Anand", description: "Expert in ear, nose, and throat disorders." },
+        ];
+
+        function searchDoctors() {
+            const location = document.getElementById('location').value.toLowerCase();
+            const query = document.getElementById('searchQuery').value.toLowerCase();
+            const doctorList = document.getElementById('doctor-list');
+
+            // Clear the current list
+            doctorList.innerHTML = '';
+
+            // Filter and display doctors
+            const filteredDoctors = doctors.filter(doctor => {
+                return (
+                    doctor.location.toLowerCase().includes(location) &&
+                    (doctor.specialty.toLowerCase().includes(query) || doctor.description.toLowerCase().includes(query))
+                );
+            });
+
+            if (filteredDoctors.length > 0) {
+                filteredDoctors.forEach(doctor => {
+                    const doctorCard = `
+                        <div class="doctor-card">
+                            <h3>${doctor.name}</h3>
+                            <p><strong>Specialty:</strong> ${doctor.specialty}</p>
+                            <p><strong>Location:</strong> ${doctor.location}</p>
+                            <p>${doctor.description}</p>
+                            <button onclick="bookAppointment('${doctor.name}')">Book Appointment</button>
+                        </div>
+                    `;
+                    doctorList.innerHTML += doctorCard;
+                });
+            } else {
+                doctorList.innerHTML = '<p>No doctors found matching your search criteria.</p>';
+            }
+        }
+
+        function bookAppointment(doctorName) {
+            alert(`Appointment booked with ${doctorName}`);
+            // Redirect to booking details page or perform other booking actions
+        }
+    </script>
+</body>
+</html>

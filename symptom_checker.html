@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker</title>
+    <link rel="stylesheet" href="symptom_checker.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="symptom-checker">
+        <h2>Symptom Checker</h2>
+        <label for="symptomsSelect">Select your symptoms:</label>
+        <select id="symptomsSelect" multiple>
+            <option value="fever">Fever</option>
+            <option value="headache">Headache</option>
+            <option value="cough">Cough</option>
+            <option value="sore_throat">Sore Throat</option>
+            <option value="fatigue">Fatigue</option>
+            <option value="nausea">Nausea</option>
+            <option value="stomach_pain">Stomach Pain</option>
+            <option value="diarrhea">Diarrhea</option>
+            <option value="cold">Cold</option>
+            <option value="rash">Rash</option>
+            <option value="dizziness">Dizziness</option>
+            <option value="chest_pain">Chest Pain</option>
+            <option value="back_pain">Back Pain</option>
+        </select>
+        <button onclick="checkSelectedSymptoms()">Check Symptoms</button>
+        <div id="result"></div>
+    </div>
+    
+
+    <script src="symptom_checker.js"></script>
+</body>
+</html>
