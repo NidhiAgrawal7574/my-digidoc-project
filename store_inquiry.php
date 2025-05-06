@@ -2,10 +2,11 @@
 // Database connection
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "inquiry_form";
+$password = "nidhi";
+$dbname = "digidoc";
+$port = 3307;
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Check connection
 if ($conn->connect_error) {
@@ -23,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssss", $name, $email, $subject, $message);
 
         if ($stmt->execute()) {
-            echo "Your inquiry has been submitted successfully.";
+            echo "<script>alert('Your inquiry has been submitted successfully.'); window.location.href='index.html';</script>";
         } else {
             echo "Error: " . $stmt->error;
         }
         $stmt->close();
     } else {
-        echo "Please fill in all fields.";
+        echo "<script>alert('Please fill in all fields.'); window.history.back();</script>";
     }
 } else {
     echo "Invalid request.";
