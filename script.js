@@ -27,7 +27,7 @@ document.getElementById('inquiryForm').addEventListener('submit', function(event
   }
 
   // Validate Subject
-  if (!subject) {
+  if (!subject) {:
     isValid = false;
     formMessage.textContent = 'Please enter a subject.';
     formMessage.classList.add('error');

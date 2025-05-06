@@ -8,7 +8,7 @@ document.querySelector('.cta').addEventListener('click', () => {
 });
 
 // Add interactivity to the search bar
-const searchInput = document.querySelector('.search input');
+const searchInput = document.querySelector('.search input');;
 const searchButton = document.querySelector('.search button');
 
 searchButton.addEventListener('click', () => {
@@ -50,7 +50,7 @@ const socialIcons = document.querySelectorAll('.social-icons a');
 
 socialIcons.forEach(icon => {
     icon.addEventListener('mouseover', () => {
-        icon.style.color = '#03A678'; // Change icon color on hover
+        icon.style.color = '#03A678';  Change icon color on hover
     });
 
     icon.addEventListener('mouseout', () => {

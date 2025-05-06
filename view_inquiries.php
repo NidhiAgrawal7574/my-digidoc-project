@@ -21,7 +21,7 @@ $result = $conn->query($sql);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>View Inquiries</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="inquiry.css">
 </head>
 <body>
   <div class="form-container">
@@ -56,7 +56,7 @@ $result = $conn->query($sql);
         <?php endif; ?>
       </tbody>
     </table>
-    <a href="inquiry_form.html" class="button">Back to Form</a>
+    <a href="inquiry.html" class="button">Back to Form</a>
   </div>
 </body>
 </html>

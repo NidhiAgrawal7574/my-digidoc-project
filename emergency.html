@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="emergency.css">
+
+</head>
+<body>
+    <section class="emergency-resources" id="emergency-resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>Emergency Resources</h2>
+                <p>Quick access to first aid instructions and nearby medical facilities</p>
+            </div>
+    
+            <!-- Tab Navigation -->
+            <div class="resource-tabs">
+                <button class="tab-button active" data-tab="first-aid">First Aid Instructions</button>
+                <button class="tab-button" data-tab="find-hospital">Find Nearby Hospital</button>
+            </div>
+    
+            <!-- First Aid Content -->
+            <div class="tab-content active" id="first-aid-content">
+                <div class="search-container">
+                    <input type="text" id="first-aid-search" placeholder="Search condition (e.g. choking, burns)..." class="search-input">
+                </div>
+    
+                <div class="category-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="cardiac">Cardiac</button>
+                    <button class="filter-btn" data-filter="breathing">Breathing</button>
+                    <button class="filter-btn" data-filter="trauma">Trauma</button>
+                    <button class="filter-btn" data-filter="other">Other</button>
+                </div>
+    
+                <div class="first-aid-cards">
+                    <!-- Heart Attack -->
+                    <div class="emergency-card" data-category="cardiac">
+                        <div class="card-header">
+                            <h3>Heart Attack</h3>
+                            <span class="emergency-badge critical">Call 911</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Symptoms:</strong> Chest pain/pressure, pain in arm/jaw, shortness of breath, cold sweat, nausea</p>
+                            <h4>What to do:</h4>
+                            <ol>
+                                <li>Call 911 immediately</li>
+                                <li>Help the person sit down and rest in a position that feels comfortable</li>
+                                <li>Loosen any tight clothing</li>
+                                <li>If the person is not allergic to aspirin, they can chew a single adult aspirin (325 mg)</li>
+                                <li>If the person becomes unresponsive and stops breathing normally, begin CPR</li>
+                            </ol>
+                            <div class="emergency-note">
+                                Time is critical with heart attacks. Every minute matters for preventing heart damage.
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Choking -->
+                    <div class="emergency-card" data-category="breathing">
+                        <div class="card-header">
+                            <h3>Choking</h3>
+                            <span class="emergency-badge critical">Emergency</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Signs:</strong> Cannot speak, cough or breathe, may point at throat, blue skin</p>
+                            <h4>For Adults:</h4>
+                            <ol>
+                                <li>Stand behind the person and wrap your arms around their waist</li>
+                                <li>Make a fist with one hand and place it above their navel</li>
+                                <li>Grasp your fist with the other hand and give quick upward thrusts</li>
+                                <li>Repeat until the object is expelled</li>
+                            </ol>
+                            <h4>For Infants:</h4>
+                            <ol>
+                                <li>Place infant face down along your forearm</li>
+                                <li>Give 5 back slaps between shoulder blades</li>
+                                <li>Turn infant over and give 5 chest thrusts</li>
+                                <li>Repeat until object is expelled</li>
+                            </ol>
+                        </div>
+                    </div>
+    
+                    <!-- Severe Bleeding -->
+                    <div class="emergency-card" data-category="trauma">
+                        <div class="card-header">
+                            <h3>Severe Bleeding</h3>
+                            <span class="emergency-badge critical">Emergency</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Signs:</strong> Heavy blood flow, blood spurting, weakness, confusion</p>
+                            <h4>What to do:</h4>
+                            <ol>
+                                <li>Call 911</li>
+                                <li>Apply direct pressure with clean cloth or bandage</li>
+                                <li>If blood soaks through, add another layer without removing first layer</li>
+                                <li>If possible, elevate the wounded area above heart level</li>
+                                <li>Secure dressing with bandage when bleeding slows</li>
+                            </ol>
+                            <div class="emergency-note">
+                                Only use a tourniquet as a last resort when bleeding can't be controlled.
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Burns -->
+                    <div class="emergency-card" data-category="trauma">
+                        <div class="card-header">
+                            <h3>Burns</h3>
+                            <span class="emergency-badge urgent">Seek Medical Care</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Types:</strong> First degree (red skin), Second degree (blisters), Third degree (white/charred)</p>
+                            <h4>For Minor Burns:</h4>
+                            <ol>
+                                <li>Cool with running water for 10-15 minutes</li>
+                                <li>Do not use ice</li>
+                                <li>Apply aloe vera or moisturizer</li>
+                                <li>Cover with sterile bandage</li>
+                            </ol>
+                            <h4>For Severe Burns:</h4>
+                            <ol>
+                                <li>Call 911</li>
+                                <li>Do not remove burned clothing</li>
+                                <li>Cover with clean, cool, moist bandages</li>
+                                <li>Elevate the burned area</li>
+                            </ol>
+                        </div>
+                    </div>
+    
+                    <!-- Stroke -->
+                    <div class="emergency-card" data-category="cardiac">
+                        <div class="card-header">
+                            <h3>Stroke</h3>
+                            <span class="emergency-badge critical">Call 911</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Remember "FAST":</strong></p>
+                            <ul>
+                                <li><strong>F</strong>ace drooping</li>
+                                <li><strong>A</strong>rm weakness</li>
+                                <li><strong>S</strong>peech difficulty</li>
+                                <li><strong>T</strong>ime to call 911</li>
+                            </ul>
+                            <h4>What to do:</h4>
+                            <ol>
+                                <li>Call 911 immediately - note when symptoms started</li>
+                                <li>Have person lie down with head slightly elevated</li>
+                                <li>Do not give food, drink, or medication</li>
+                                <li>Monitor breathing until help arrives</li>
+                            </ol>
+                            <div class="emergency-note">
+                                Time is critical for stroke. Every minute could save brain cells.
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Asthma Attack -->
+                    <div class="emergency-card" data-category="breathing">
+                        <div class="card-header">
+                            <h3>Asthma Attack</h3>
+                            <span class="emergency-badge urgent">Seek Medical Care</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Signs:</strong> Difficulty breathing, wheezing, coughing, tight chest</p>
+                            <h4>What to do:</h4>
+                            <ol>
+                                <li>Help person sit upright in comfortable position</li>
+                                <li>Help them use their inhaler (usually 1-2 puffs)</li>
+                                <li>Encourage slow, steady breathing</li>
+                                <li>If no improvement in 5-10 minutes, they can take another dose</li>
+                                <li>Call 911 if symptoms worsen or inhaler has no effect</li>
+                            </ol>
+                        </div>
+                    </div>
+    
+                    <!-- Allergic Reaction -->
+                    <div class="emergency-card" data-category="other">
+                        <div class="card-header">
+                            <h3>Severe Allergic Reaction</h3>
+                            <span class="emergency-badge critical">Emergency</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Signs:</strong> Hives, swelling, difficulty breathing, dizziness, nausea</p>
+                            <h4>What to do:</h4>
+                            <ol>
+                                <li>Call 911</li>
+                                <li>Ask if they have an epinephrine auto-injector (EpiPen)</li>
+                                <li>Help them use their auto-injector if available</li>
+                                <li>Help them to a comfortable position</li>
+                                <li>Monitor for signs of shock</li>
+                            </ol>
+                            <div class="emergency-note">
+                                Even after using an auto-injector, medical care is still necessary.
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Seizure -->
+                    <div class="emergency-card" data-category="other">
+                        <div class="card-header">
+                            <h3>Seizure</h3>
+                            <span class="emergency-badge urgent">Seek Medical Care</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Signs:</strong> Sudden fall, rigid body, jerking movements, loss of consciousness</p>
+                            <h4>What to do:</h4>
+                            <ol>
+                                <li>Help the person to the ground</li>
+                                <li>Clear area of hard objects</li>
+                                <li>Place something soft under their head</li>
+                                <li>Turn them gently onto their side</li>
+                                <li>DO NOT place anything in their mouth</li>
+                                <li>Time the seizure - call 911 if longer than 5 minutes</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Hospital Locator Content -->
+            <div class="tab-content" id="find-hospital-content">
+                <div class="hospital-finder">
+                    <div class="finder-form">
+                        <h3>Find Nearby Hospitals</h3>
+                        <p>Enter your location to find medical facilities near you</p>
+                        
+                        <div class="form-group">
+                            <label for="location-input">Your Location</label>
+                            <input type="text" id="location-input" placeholder="Enter city or ZIP code" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="facility-type">Facility Type</label>
+                            <select id="facility-type" class="form-control">
+                                <option value="all">All Medical Facilities</option>
+                                <option value="hospital">Hospitals</option>
+                                <option value="urgent">Urgent Care</option>
+                                <option value="clinic">Clinics</option>
+                            </select>
+                        </div>
+                        
+                        <button id="find-hospitals-btn" class="btn btn-primary">Find Hospitals</button>
+                    </div>
+                    
+                    <div class="results-container">
+                        <div id="hospital-results" class="hospital-results">
+                            <div class="placeholder-message">
+                                <p>Enter your location to see nearby medical facilities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="emergency.js"></script>  
+</body>
+</html>

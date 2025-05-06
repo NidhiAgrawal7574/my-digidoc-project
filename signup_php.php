@@ -2,11 +2,12 @@
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "nidhi";
 $dbname = "digidoc";
+$port="3307";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname , $port);
 
 // Check connection
 if ($conn->connect_error) {
@@ -19,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars(trim($_POST['email']));
     $password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT); // Securely hash password
     $phone = htmlspecialchars(trim($_POST['phone-number']));
+    
 
     // Ensure all fields are filled
     if (empty($username) || empty($email) || empty($password) || empty($phone)) {
@@ -42,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $username, $email, $password, $phone);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Account created successfully!'); window.location.href = 'login.html';</script>";
+        echo "<script>alert('Account created successfully!'); window.location.href = 'Login html.html';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }

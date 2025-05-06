@@ -1,30 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inquiry Form</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiDoc - Your Gateway to Better Health</title>
+    <link rel="stylesheet" href="Home pg css.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="Images/logo.png" type="image/png">
+
 </head>
 <body>
-  <div class="form-container">
-    <h2>Inquiry Form</h2>
-    <form id="inquiryForm" method="POST" action="store_inquiry.php">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+    <header>
+        <img src="Images/logo.png" alt="DigiDoc Logo" class="logo">
+        <div class="logo">DigiDoc</div>
+        
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="aboutnew.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="Login html.html">Login</a></li>
+            </ul>
+        </nav>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <button>🔍</button>
+        </div>
+    </header>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Your Digital Gateway to Better Health</h1>
+                <p>One-stop platform for seamless healthcare: check symptoms,<br> book consultations, access medical records,<br> and more—all from the comfort of your home.</p>
+                <button class="cta"><a href="inquiry.html">Inquiry form</a></button>
+            </div>
+            <div class="hero-image">
+                <img src="Images/doctors.png" alt="Healthcare" />
+            </div>
+        </section>
 
-      <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" required>
+        <section class="services">
+            <h2>Our Services :</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <img src="Images/symptom checker.png" alt="Symptom Checker">
+                    <h3><a href="symptom_checker.html">Symptom Checker</a></h3>
+                    <p>Quickly identify potential health issues with our easy-to-use symptom checker.</p>
+                </div>
+                <div class="card">
+                    <img src="Images/online consultation.jpg" alt="Online Consultation">
+                    <h3><a href="appt_scheduling.html">Appointment Scheduling</a></h3>
+                    <p>Schedule your appointment with our healthcare professionals.</p>
+                </div>
+                <div class="card">
+                    <img src="Images/medical records.webp" alt="Medical Records">
+                    <h3><a href="emergency.html">Emergency Resources</a></h3>
+                    <p>Quick access to first aid instructions and nearby medical facilities.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <button type="submit">Submit</button>
-    </form>
-    <a href="view_inquiries.php" class="button">View Inquiries</a>
-  </div>
+    <footer>
+        <p>Follow Us for the Latest in Health and Wellness!</p>
+        <div class="social-icons">
+            <a href="#" target="_blank">
+                <img src="Images/facebook.jpeg" alt="Facebook" />
+            </a>
+            <a href="#" target="_blank">
+                <img src="Images/instagram.jpeg" alt="Instagram" />
+            </a>
+            <a href="#" target="_blank">
+                <img src="Images/youtube.png" alt="Youtube" />
+            </a>
+            <a href="#" target="_blank">
+                <img src="Images/twitter.png" alt="Twitter" />
+            </a>
+            
+        </div>
+    </footer>
+    <div class="whatsapp-icon">
+        <a href="https://wa.me/7574943276" target="_blank" title="Chat with us on WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+    </div>
 </body>
 </html>

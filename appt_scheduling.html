@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointment Scheduling Form</title>
+    <link rel="stylesheet" href="appt_scheduling.css">
+</head>
+<body>
+    <section class="appointment-section" id="book-appointment">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book an Appointment</h2>
+                <p>Schedule your appointment with our healthcare professionals</p>
+            </div>
+            
+            <div class="appointment-form">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="patientName">Full Name</label>
+                        <input type="text" id="patientName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientEmail">Email</label>
+                        <input type="email" id="patientEmail" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientPhone">Phone Number</label>
+                        <input type="tel" id="patientPhone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department">Department/Specialty</label>
+                        <select id="department" class="form-control" required>
+                            <option value="">Select Department</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="dermatology">Dermatology</option>
+                            <option value="general">General Medicine</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="doctor">Select Doctor</label>
+                        <select id="doctor" class="form-control" required>
+                            <option value="">First select department</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentDate">Preferred Date</label>
+                        <input type="date" id="appointmentDate" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentTime">Preferred Time</label>
+                        <select id="appointmentTime" class="form-control" required>
+                            <option value="">Select Time</option>
+                            <option value="9:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Appointment Type</label>
+                        <div class="appointment-type-options">
+                            <div class="option">
+                                <input type="radio" id="typeOffline" name="appointmentType" value="offline" checked>
+                                <label for="typeOffline">In-Person Visit</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="typeOnline" name="appointmentType" value="online">
+                                <label for="typeOnline">Virtual Consultation</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="onlinePlatformGroup" style="display: none;">
+                        <label for="onlinePlatform">Preferred Platform</label>
+                        <select id="onlinePlatform" class="form-control">
+                            <option value="zoom">Zoom</option>
+                            <option value="gmeet">Google Meet</option>
+                            <option value="teams">Microsoft Teams</option>
+                            <option value="other">Other (specify in notes)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit</label>
+                        <textarea id="reason" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Book Appointment</button>
+                </form>
+                
+                <div id="appointmentConfirmation" class="confirmation-message" style="display: none;">
+                    <div class="alert alert-success">
+                        <h4>Appointment Booked Successfully!</h4>
+                        <p>Thank you for booking an appointment with DigiDoc Health. We've sent a confirmation to your email.</p>
+                        <div id="appointmentDetails"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="appt_scheduling.js"></script>
+</body>
+</html>
