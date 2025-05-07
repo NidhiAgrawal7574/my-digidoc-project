@@ -3,106 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigiDoc - Your Gateway to Better Health</title>
-    <link rel="stylesheet" href="Home pg css.css">
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-        <link rel="icon" href="Images/logo.png" type="image/png">
-
+    <title>DigiDoc Health - Your Gateway to Better Health</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="icon" href="Images/logo.png" type="image/png">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <img src="Images/logo.png" alt="DigiDoc Logo" class="logo">
-        <div class="logo">DigiDoc</div>
-        
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="aboutnew.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="Login html.html">Login</a></li>
-            </ul>
-        </nav>
-        <div class="search">
-            <input type="text" placeholder="Search">
-            <button>🔍</button>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i> DigiDoc Health
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="aboutdemo.html">About</a></li>
+                    <li><a href="contactdemo.html">Contact</a></li>
+                    <li><a href="Login html.html" class="btn">Login</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-text">
-                <h1>Your Digital Gateway to Better Health</h1>
-                <p>One-stop platform for seamless healthcare: check symptoms,<br> book consultations, access medical records,<br> and more—all from the comfort of your home.</p>
-                <button class="cta"><a href="inquiry.html">Inquiry form</a></button>
-            </div>
-            <div class="hero-image">
-                <img src="Images/doctors.png" alt="Healthcare" />
+            <div class="gradient-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Your Digital Gateway to Better Health</h1>
+                        <p>One-stop platform for seamless healthcare: check symptoms, book consultations, access medical records, and more—all from the comfort of your home.</p>
+                        <a href="inquiry.html" class="btn btn-primary">Inquiry Form</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="/Images/doctors.jpg" alt="Healthcare" />
+                    </div>
+                </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="/Images/symptom checker.png" alt="Symptom Checker">
+                        <h3><i class="fas fa-stethoscope"></i> <a href="symptom_checker.html">Symptom Checker</a></h3>
+                        <p>Quickly identify potential health issues with our easy-to-use symptom checker. Get guidance on next steps based on your symptoms.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="/Images/online consultation.jpg" alt="Online Consultation">
+                        <h3><i class="fas fa-calendar-check"></i> <a href="appt_scheduling.html">Appointment Scheduling</a></h3>
+                        <p>Schedule your appointment with our healthcare professionals. Find available slots and book visits with just a few clicks.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="/Images/medical records.webp" alt="Emergency Resources">
+                        <h3><i class="fas fa-first-aid"></i> <a href="emergency.html">Emergency Resources</a></h3>
+                        <p>Quick access to first aid instructions and nearby medical facilities. Essential information when you need it most.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="services">
-            <h2>Our Services :</h2>
-            <div class="service-cards">
-                <div class="card">
-                    <img src="Images/symptom checker.png" alt="Symptom Checker">
-                    <h3><a href="symptom_checker.html">Symptom Checker</a></h3>
-                    <p>Quickly identify potential health issues with our easy-to-use symptom checker.</p>
-                </div>
-                <div class="card">
-                    <img src="Images/online consultation.jpg" alt="Online Consultation">
-                    <h3><a href="appt_scheduling.html">Appointment Scheduling</a></h3>
-                    <p>Schedule your appointment with our healthcare professionals.</p>
-                </div>
-                <div class="card">
-                    <img src="Images/medical records.webp" alt="Medical Records">
-                    <h3><a href="emergency.html">Emergency Resources</a></h3>
-                    <p>Quick access to first aid instructions and nearby medical facilities.</p>
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <h2>Find Healthcare Services</h2>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for services, doctors, or healthcare information">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>Follow Us for the Latest in Health and Wellness!</p>
-        <div class="social-icons">
-            <a href="#" target="_blank">
-                <div style="display: flex; flex-direction: row-reverse; justify-content: center; gap: 30px; margin-top: 50px;">
-
-                    <!-- Instagram -->
-                    <div class="instagram-icon">
-                      <a href="https://www.instagram.com/yourusername" target="_blank" title="Follow us on Instagram">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="40">
-                      </a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DigiDoc Health</h3>
+                    <p>Your digital healthcare companion for a healthier tomorrow.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="symptom_checker.html">Symptom Checker</a></li>
+                        <li><a href="appt_scheduling.html">Appointment Booking</a></li>
+                        <li><a href="emergency.html">Emergency Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     </div>
-                  <!-- YouTube -->
-<div class="youtube-icon">
-    <a href="https://www.youtube.com/yourchannel" target="_blank" title="Subscribe on YouTube">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_(2017).svg" alt="YouTube" width="40">
-    </a>
-  </div>
-  
-                    
-                  
-                    <!-- Facebook -->
-                    <div class="facebook-icon">
-                      <a href="https://www.facebook.com/yourusername" target="_blank" title="Follow us on Facebook">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" width="40">
-                      </a>
-                    </div>
-                  
-                    <!-- Twitter -->
-                    <div class="twitter-icon">
-                      <a href="https://twitter.com/yourusername" target="_blank" title="Follow us on Twitter">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter" width="40">
-                      </a>
-                    </div>
-            
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DigiDoc Health. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
     <div class="whatsapp-icon">
         <a href="https://wa.me/7574943276" target="_blank" title="Chat with us on WhatsApp">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
         </a>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
