@@ -1,111 +1,75 @@
-/* General Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: 'Segoe UI', sans-serif;
+  background: #e0f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
-  color: #333;
 }
 
-a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Form Container */
 .form-container {
-  max-width: 600px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background-color: #ffffff;
+  border: 2px solid #4fc3f7;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 400px;
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  color: #0277bd;
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #01579b;
 }
 
-input, textarea, button {
+input, textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #81d4fa;
   border-radius: 5px;
-  font-size: 16px;
-  font-family: inherit;
+  box-sizing: border-box;
 }
 
-/* Buttons */
 button {
-  background-color: #007bff;
-  color: #fff;
+  width: 100%;
+  padding: 10px;
+  background-color: #039be5;
+  color: white;
   border: none;
+  border-radius: 5px;
+  margin-top: 15px;
   cursor: pointer;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0288d1;
 }
 
-a.button {
-  display: inline-block;
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 15px;
+.button {
+  display: block;
   text-align: center;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-a.button:hover {
-  background-color: #0056b3;
-}
-
-/* Table */.
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 16px;
-}
-
-table th, table td {
+  margin-top: 20px;
+  text-decoration: none;
+  background-color: #00acc1;
+  color: white;
   padding: 10px;
-  text-align: left;
-  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-table th {
-  background-color: #f4f4f9;
-  font-weight: bold;
+.button:hover {
+  background-color: #00838f;
 }
 
-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* Message Display */
-#formMessage {
+#successMessage {
   text-align: center;
   color: green;
-  margin-top: 10px;
-}
-
-.error {
-  color: red;
+  margin-top: 15px;
+  font-weight: bold;
 }
