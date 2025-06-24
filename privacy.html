@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - DigiDoc Health</title>
+    <link rel="stylesheet" href="indexstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="icon" href="Images/logo.png" type="image/png">
+    <style>
+        /* Additional styles for privacy page */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .privacy-container {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .privacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .privacy-section {
+            margin-bottom: 50px;
+            padding: 40px;
+            background: #fafafa;
+            border-radius: 16px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .privacy-section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .privacy-section h3 {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .privacy-section p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .privacy-section ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .privacy-section li {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 229, 179, 0.1), rgba(38, 166, 154, 0.1));
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .highlight-box p {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+
+        .last-updated {
+            text-align: center;
+            padding: 40px;
+            background: var(--gray-bg);
+            color: #666;
+            font-style: italic;
+        }
+
+        .table-of-contents {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        .table-of-contents h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 10px;
+        }
+
+        .table-of-contents a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .privacy-section {
+                padding: 25px;
+                margin-bottom: 30px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .privacy-container {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i> DigiDoc Health
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="Login html.html" class="btn">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Privacy Policy</h1>
+                <p>Your privacy and data security are our top priorities. Learn how we protect and handle your personal health information.</p>
+            </div>
+        </section>
+
+        <!-- Privacy Content -->
+        <section class="privacy-container">
+            <div class="container privacy-content">
+                
+                <!-- Table of Contents -->
+                <div class="table-of-contents">
+                    <h3><i class="fas fa-list"></i> Table of Contents</h3>
+                    <ul>
+                        <li><a href="#overview"><i class="fas fa-chevron-right"></i> Overview</a></li>
+                        <li><a href="#information-collection"><i class="fas fa-chevron-right"></i> Information We Collect</a></li>
+                        <li><a href="#information-use"><i class="fas fa-chevron-right"></i> How We Use Your Information</a></li>
+                        <li><a href="#information-sharing"><i class="fas fa-chevron-right"></i> Information Sharing</a></li>
+                        <li><a href="#data-security"><i class="fas fa-chevron-right"></i> Data Security</a></li>
+                        <li><a href="#hipaa-compliance"><i class="fas fa-chevron-right"></i> HIPAA Compliance</a></li>
+                        <li><a href="#your-rights"><i class="fas fa-chevron-right"></i> Your Rights</a></li>
+                        <li><a href="#cookies"><i class="fas fa-chevron-right"></i> Cookies & Tracking</a></li>
+                        <li><a href="#third-party"><i class="fas fa-chevron-right"></i> Third-Party Services</a></li>
+                        <li><a href="#updates"><i class="fas fa-chevron-right"></i> Policy Updates</a></li>
+                    </ul>
+                </div>
+
+                <!-- Overview Section -->
+                <div id="overview" class="privacy-section">
+                    <h2><i class="fas fa-shield-alt"></i> Overview</h2>
+                    <p>DigiDoc Health is committed to protecting your privacy and maintaining the confidentiality of your personal health information (PHI). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our digital healthcare platform.</p>
+                    
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-info-circle"></i> Important Note</h4>
+                        <p>As a healthcare service provider, we are bound by HIPAA (Health Insurance Portability and Accountability Act) regulations and other applicable privacy laws. Your health information is treated with the highest level of security and confidentiality.</p>
+                    </div>
+                </div>
+
+                <!-- Information Collection -->
+                <div id="information-collection" class="privacy-section">
+                    <h2><i class="fas fa-database"></i> Information We Collect</h2>
+                    
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li>Name, date of birth, gender, and contact information</li>
+                        <li>Government-issued ID numbers (as required for verification)</li>
+                        <li>Insurance information and billing details</li>
+                        <li>Emergency contact information</li>
+                    </ul>
+
+                    <h3>Health Information</h3>
+                    <ul>
+                        <li>Medical history, symptoms, and health conditions</li>
+                        <li>Prescription and medication information</li>
+                        <li>Test results, diagnostic reports, and medical images</li>
+                        <li>Treatment plans and healthcare provider notes</li>
+                        <li>Vital signs and health monitoring data</li>
+                    </ul>
+
+                    <h3>Technical Information</h3>
+                    <ul>
+                        <li>IP address, browser type, and device information</li>
+                        <li>Usage patterns and interaction data</li>
+                        <li>Location data (when necessary for emergency services)</li>
+                        <li>Session logs and system performance data</li>
+                    </ul>
+                </div>
+
+                <!-- Information Use -->
+                <div id="information-use" class="privacy-section">
+                    <h2><i class="fas fa-cogs"></i> How We Use Your Information</h2>
+                    <p>We use your information solely for legitimate healthcare purposes:</p>
+                    
+                    <ul>
+                        <li><strong>Healthcare Delivery:</strong> Providing medical consultations, diagnosis, treatment, and care coordination</li>
+                        <li><strong>Appointment Management:</strong> Scheduling, reminders, and healthcare provider communication</li>
+                        <li><strong>Emergency Services:</strong> Connecting you with emergency medical assistance when needed</li>
+                        <li><strong>Health Monitoring:</strong> Tracking your health progress and medication adherence</li>
+                        <li><strong>Platform Improvement:</strong> Enhancing our services and user experience (using anonymized data)</li>
+                        <li><strong>Legal Compliance:</strong> Meeting regulatory requirements and legal obligations</li>
+                        <li><strong>Communication:</strong> Sending important health-related notifications and updates</li>
+                    </ul>
+                </div>
+
+                <!-- Information Sharing -->
+                <div id="information-sharing" class="privacy-section">
+                    <h2><i class="fas fa-share-alt"></i> Information Sharing</h2>
+                    <p>We only share your information in the following limited circumstances:</p>
+                    
+                    <h3>With Your Consent</h3>
+                    <p>We will share your information with third parties only when you provide explicit consent.</p>
+
+                    <h3>Healthcare Providers</h3>
+                    <p>Your information may be shared with healthcare professionals involved in your care, including:</p>
+                    <ul>
+                        <li>Consulting physicians and specialists</li>
+                        <li>Pharmacies for prescription fulfillment</li>
+                        <li>Laboratories for test processing</li>
+                        <li>Emergency medical services when necessary</li>
+                    </ul>
+
+                    <h3>Legal Requirements</h3>
+                    <p>We may disclose information when required by law, including:</p>
+                    <ul>
+                        <li>Court orders or legal proceedings</li>
+                        <li>Public health reporting requirements</li>
+                        <li>Child or elder abuse reporting</li>
+                        <li>Communicable disease notifications</li>
+                    </ul>
+                </div>
+
+                <!-- Data Security -->
+                <div id="data-security" class="privacy-section">
+                    <h2><i class="fas fa-lock"></i> Data Security</h2>
+                    <p>We implement comprehensive security measures to protect your information:</p>
+                    
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-certificate"></i> Our Security Measures</h4>
+                        <p>End-to-end encryption, secure data centers, regular security audits, multi-factor authentication, and 24/7 monitoring systems.</p>
+                    </div>
+
+                    <ul>
+                        <li><strong>Encryption:</strong> All data is encrypted both in transit and at rest using industry-standard protocols</li>
+                        <li><strong>Access Controls:</strong> Strict role-based access controls and authentication systems</li>
+                        <li><strong>Regular Audits:</strong> Continuous security assessments and vulnerability testing</li>
+                        <li><strong>Staff Training:</strong> Regular privacy and security training for all personnel</li>
+                        <li><strong>Incident Response:</strong> Comprehensive breach detection and response procedures</li>
+                        <li><strong>Data Backup:</strong> Secure, encrypted backup systems with disaster recovery protocols</li>
+                    </ul>
+                </div>
+
+                <!-- HIPAA Compliance -->
+                <div id="hipaa-compliance" class="privacy-section">
+                    <h2><i class="fas fa-gavel"></i> HIPAA Compliance</h2>
+                    <p>DigiDoc Health is fully compliant with HIPAA regulations:</p>
+                    
+                    <ul>
+                        <li><strong>Business Associate Agreements:</strong> All third-party vendors sign HIPAA-compliant agreements</li>
+                        <li><strong>Minimum Necessary Standard:</strong> We only access and share the minimum information necessary</li>
+                        <li><strong>Administrative Safeguards:</strong> Comprehensive policies and procedures for PHI protection</li>
+                        <li><strong>Physical Safeguards:</strong> Secure facilities and equipment controls</li>
+                        <li><strong>Technical Safeguards:</strong> Electronic access controls and audit logs</li>
+                        <li><strong>Breach Notification:</strong> Prompt notification procedures for any potential breaches</li>
+                    </ul>
+                </div>
+
+                <!-- Your Rights -->
+                <div id="your-rights" class="privacy-section">
+                    <h2><i class="fas fa-user-shield"></i> Your Rights</h2>
+                    <p>You have the following rights regarding your personal health information:</p>
+                    
+                    <ul>
+                        <li><strong>Right to Access:</strong> Request copies of your health records</li>
+                        <li><strong>Right to Amendment:</strong> Request corrections to your health information</li>
+                        <li><strong>Right to Restriction:</strong> Request limits on how your information is used</li>
+                        <li><strong>Right to Portability:</strong> Transfer your data to another healthcare provider</li>
+                        <li><strong>Right to Accounting:</strong> Receive a list of disclosures of your information</li>
+                        <li><strong>Right to Notification:</strong> Be notified of any breaches affecting your information</li>
+                        <li><strong>Right to Revoke:</strong> Withdraw consent for certain uses of your information</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-phone"></i> Exercise Your Rights</h4>
+                        <p>To exercise any of these rights, please contact our Privacy Officer using the contact information provided below.</p>
+                    </div>
+                </div>
+
+                <!-- Cookies & Tracking -->
+                <div id="cookies" class="privacy-section">
+                    <h2><i class="fas fa-cookie-bite"></i> Cookies & Tracking Technologies</h2>
+                    <p>We use cookies and similar technologies to improve your experience:</p>
+                    
+                    <h3>Types of Cookies We Use</h3>
+                    <ul>
+                        <li><strong>Essential Cookies:</strong> Required for basic platform functionality</li>
+                        <li><strong>Performance Cookies:</strong> Help us understand how you use our platform</li>
+                        <li><strong>Functional Cookies:</strong> Remember your preferences and settings</li>
+                        <li><strong>Security Cookies:</strong> Protect against fraudulent activity</li>
+                    </ul>
+
+                    <p>You can control cookie settings through your browser preferences. However, disabling certain cookies may limit platform functionality.</p>
+                </div>
+
+                <!-- Third-Party Services -->
+                <div id="third-party" class="privacy-section">
+                    <h2><i class="fas fa-handshake"></i> Third-Party Services</h2>
+                    <p>We work with trusted third-party service providers who assist in delivering our healthcare services:</p>
+                    
+                    <ul>
+                        <li><strong>Cloud Storage Providers:</strong> Secure, HIPAA-compliant data storage</li>
+                        <li><strong>Payment Processors:</strong> Secure transaction processing</li>
+                        <li><strong>Communication Services:</strong> Encrypted messaging and video calls</li>
+                        <li><strong>Analytics Providers:</strong> Platform performance and usage analysis (anonymized data only)</li>
+                    </ul>
+
+                    <p>All third-party providers are required to maintain the same level of privacy and security standards as DigiDoc Health.</p>
+                </div>
+
+                <!-- Policy Updates -->
+                <div id="updates" class="privacy-section">
+                    <h2><i class="fas fa-sync-alt"></i> Policy Updates</h2>
+                    <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. When we make significant changes:</p>
+                    
+                    <ul>
+                        <li>We will notify you via email and platform notifications</li>
+                        <li>We will post the updated policy on our website</li>
+                        <li>We will provide a summary of key changes</li>
+                        <li>You will have the opportunity to review and accept the changes</li>
+                    </ul>
+
+                    <p>Your continued use of our services after notification constitutes acceptance of the updated policy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2>Privacy Questions or Concerns?</h2>
+                    <p>Our Privacy Officer is available to address any questions or concerns about your privacy rights and our data practices.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>privacy@digidochealth.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 7574943276</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Vadodara, Gujarat, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Last Updated -->
+        <div class="last-updated">
+            <div class="container">
+                <p>Last Updated: June 24, 2025 | Effective Date: January 1, 2025</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DigiDoc Health</h3>
+                    <p>Your digital healthcare companion for a healthier tomorrow.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="symptom_checker.html">Symptom Checker</a></li>
+                        <li><a href="appt_scheduling.html">Appointment Booking</a></li>
+                        <li><a href="emergency.html">Emergency Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DigiDoc Health. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="whatsapp-icon">
+        <a href="https://wa.me/7574943276" target="_blank" title="Chat with us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for table of contents links
+            const tocLinks = document.querySelectorAll('.table-of-contents a');
+            
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Highlight the target section briefly
+                        targetSection.style.backgroundColor = 'rgba(30, 229, 179, 0.1)';
+                        setTimeout(() => {
+                            targetSection.style.backgroundColor = '';
+                        }, 2000);
+                    }
+                });
+            });
+
+            // Add scroll spy functionality
+            const sections = document.querySelectorAll('.privacy-section');
+            const navLinks = document.querySelectorAll('.table-of-contents a');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 100;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').slice(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Add hover effects to highlight boxes
+            const highlightBoxes = document.querySelectorAll('.highlight-box');
+            
+            highlightBoxes.forEach(box => {
+                box.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                box.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
