@@ -27,7 +27,7 @@
   </header>
 
   <!-- About Page Content -->
-  <div class="about-content" id="about-content">
+  <div class="about-content">
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
@@ -47,32 +47,32 @@
 
         <!-- What We Offer -->
         <h2 class="section-title">What We Offer</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3><i class="fas fa-stethoscope"></i> Symptom Checker</h3>
-                        <p>Our AI-powered symptom checker helps you understand potential causes for your symptoms and guides you toward appropriate care options. While not a replacement for professional medical advice, it serves as a first step in your healthcare journey.</p>
-                    </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3><i class="fas fa-stethoscope"></i> Symptom Checker</h3>
+                <p>Our AI-powered symptom checker helps you understand potential causes for your symptoms and guides you toward appropriate care options. While not a replacement for professional medical advice, it serves as a first step in your healthcare journey.</p>
+            </div>
 
-                    <div class="service-card">
-                        <h3><i class="fas fa-video"></i> Online Consultation</h3>
-                        <p>Connect with qualified healthcare professionals from the comfort of your home. Our secure video consultation platform allows you to discuss your health concerns, receive professional advice, and get prescriptions when appropriate.</p>
-                    </div>
+            <div class="service-card">
+                <h3><i class="fas fa-video"></i> Online Consultation</h3>
+                <p>Connect with qualified healthcare professionals from the comfort of your home. Our secure video consultation platform allows you to discuss your health concerns, receive professional advice, and get prescriptions when appropriate.</p>
+            </div>
 
-                    <div class="service-card">
-                        <h3><i class="fas fa-calendar-check"></i> Appointment Booking</h3>
-                        <p>Skip the long phone calls and waiting times. Our streamlined appointment booking system allows you to find and schedule appointments with healthcare providers in your area with just a few clicks.</p>
-                    </div>
+            <div class="service-card">
+                <h3><i class="fas fa-calendar-check"></i> Appointment Booking</h3>
+                <p>Skip the long phone calls and waiting times. Our streamlined appointment booking system allows you to find and schedule appointments with healthcare providers in your area with just a few clicks.</p>
+            </div>
 
-                    <div class="service-card">
-                        <h3><i class="fas fa-first-aid"></i> First Aid & Emergency</h3>
-                        <p>Access clear, step-by-step instructions for handling common emergency situations and administering first aid. Knowledge that could save a life is always at your fingertips.</p>
-                    </div>
+            <div class="service-card">
+                <h3><i class="fas fa-first-aid"></i> First Aid & Emergency</h3>
+                <p>Access clear, step-by-step instructions for handling common emergency situations and administering first aid. Knowledge that could save a life is always at your fingertips.</p>
+            </div>
 
-                    <div class="service-card">
-                        <h3><i class="fas fa-hospital"></i> Nearby Healthcare</h3>
-                        <p>Quickly locate hospitals, clinics, and pharmacies in your vicinity by simply entering your pincode. Get essential information like contact details, services offered, and directions.</p>
-                    </div>
-                </div>
+            <div class="service-card">
+                <h3><i class="fas fa-hospital"></i> Nearby Healthcare</h3>
+                <p>Quickly locate hospitals, clinics, and pharmacies in your vicinity by simply entering your pincode. Get essential information like contact details, services offered, and directions.</p>
+            </div>
+        </div>
 
         <!-- Team Section -->
         <div class="team-section">
@@ -87,7 +87,6 @@
         </div>
 
         <!-- Commitment Section -->
-
         <div class="commitment-section">
             <h2>Our Commitment</h2>
             <p>We are committed to providing the highest quality healthcare services digitally.</p>
@@ -114,6 +113,7 @@
       </div>
     </section>
   </div>
+
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -154,84 +154,7 @@
         <div class="copyright">
             <p>&copy; 2025 DigiDoc Health. All rights reserved.</p>
         </div>
-        
     </div>
-</footer>
-  <script>
-    // JavaScript for tab functionality
-    function openTab(tabName) {
-        // Hide all tab content
-        var tabContents = document.getElementsByClassName("tab-content");
-        for (var i = 0; i < tabContents.length; i++) {
-            tabContents[i].classList.remove("active");
-        }
-        
-        // Remove active class from all tabs
-        var tabs = document.getElementsByClassName("tab");
-        for (var i = 0; i < tabs.length; i++) {
-            tabs[i].classList.remove("active");
-        }
-        
-        // Show the selected tab content and mark the button as active
-        document.getElementById(tabName).classList.add("active");
-        event.currentTarget.classList.add("active");
-    }
-    
-    // Function to toggle between About and Contact pages
-    function togglePages(page) {
-        if (page === 'about') {
-            document.getElementById('about-content').style.display = 'block';
-            document.getElementById('contact-content').style.display = 'none';
-            
-            // Update active nav link
-            var navLinks = document.querySelectorAll('.nav-links a');
-            for (var i = 0; i < navLinks.length; i++) {
-                if (navLinks[i].getAttribute('href') === 'about.html') {
-                    navLinks[i].classList.add('active');
-                } else if (navLinks[i].getAttribute('href') === 'contact.html') {
-                    navLinks[i].classList.remove('active');
-                }
-            }
-        } else if (page === 'contact') {
-            document.getElementById('about-content').style.display = 'none';
-            document.getElementById('contact-content').style.display = 'block';
-            
-            // Update active nav link
-            var navLinks = document.querySelectorAll('.nav-links a');
-            for (var i = 0; i < navLinks.length; i++) {
-                if (navLinks[i].getAttribute('href') === 'contact.html') {
-                    navLinks[i].classList.add('active');
-                } else if (navLinks[i].getAttribute('href') === 'about.html') {
-                    navLinks[i].classList.remove('active');
-                }
-            }
-        }
-    }
-    
-    // For demonstration purposes - comment out in production
-    // This allows you to see both pages in this single HTML file
-    document.addEventListener('DOMContentLoaded', function() {
-        // Uncomment the line below to show the About page by default
-        // togglePages('about');
-        
-        // Add event listeners for demo navigation
-        var aboutLink = document.querySelector('a[href="about.html"]');
-        var contactLink = document.querySelector('a[href="contact.html"]');
-        
-        if (aboutLink) {
-            aboutLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                togglePages('about');
-            });
-        }
-        
-        if (contactLink) {
-            contactLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                togglePages('contact');
-            });
-        }
-    });
-</script>
+  </footer>
 </body>
 </html>
