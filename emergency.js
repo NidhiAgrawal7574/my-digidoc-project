@@ -68,92 +68,69 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hospital Finder
     const hospitalDatabase = {
-        "New York": [
+        "390001": [
             {
-                name: "Mount Sinai Hospital",
-                address: "1468 Madison Ave, New York, NY 10029",
-                phone: "(212) 241-6500",
-                type: "hospital",
-                distance: "2.3 miles"
-            },
-            {
-                name: "NYU Langone Health",
-                address: "550 1st Ave, New York, NY 10016",
-                phone: "(212) 263-7300",
-                type: "hospital",
-                distance: "1.8 miles"
-            },
-            {
-                name: "CityMD Urgent Care",
-                address: "24 W 57th St, New York, NY 10019",
-                phone: "(212) 315-2330",
-                type: "urgent",
-                distance: "0.8 miles"
+                name: "S.G. Hospital",
+        address: "Lalbaug Road, Manjalpur, Vadodara, Gujarat 390001",
+        phone: "0265 232 5555",
+        type: "hospital",
+        distance: "1.1 km"
+    },
+    {
+        name: "Sterling Hospital",
+        address: "Race Course Circle, Vadodara, Gujarat 390001",
+        phone: "0265 222 4200",
+        type: "hospital",
+        distance: "2.3 km"
             }
         ],
-        "Los Angeles": [
-            {
-                name: "Cedars-Sinai Medical Center",
-                address: "8700 Beverly Blvd, Los Angeles, CA 90048",
-                phone: "(310) 423-3277",
-                type: "hospital",
-                distance: "3.1 miles"
-            },
-            {
-                name: "UCLA Medical Center",
-                address: "757 Westwood Plaza, Los Angeles, CA 90095",
-                phone: "(310) 267-8000",
-                type: "hospital",
-                distance: "2.4 miles"
-            }
-        ],
-        "Chicago": [
-            {
-                name: "Northwestern Memorial Hospital",
-                address: "251 E Huron St, Chicago, IL 60611",
-                phone: "(312) 926-2000",
-                type: "hospital",
-                distance: "1.5 miles"
-            },
-            {
-                name: "University of Chicago Medical Center",
-                address: "5841 S Maryland Ave, Chicago, IL 60637",
-                phone: "(773) 702-1000",
-                type: "hospital",
-                distance: "4.2 miles"
-            }
-        ],
-        "10001": [
-            {
-                name: "NYC Health + Hospitals/Bellevue",
-                address: "462 First Avenue, New York, NY 10016",
-                phone: "(212) 562-5555",
-                type: "hospital",
-                distance: "1.2 miles"
-            },
-            {
-                name: "Mount Sinai Beth Israel",
-                address: "10 Nathan D Perlman Pl, New York, NY 10003",
-                phone: "(212) 420-2000",
-                type: "hospital",
-                distance: "2.1 miles"
-            }
-        ],
-        "90210": [
-            {
-                name: "Cedars-Sinai Medical Center",
-                address: "8700 Beverly Blvd, Los Angeles, CA 90048",
-                phone: "(310) 423-3277",
-                type: "hospital",
-                distance: "1.7 miles"
-            },
-            {
-                name: "Beverly Hills Urgent Care",
-                address: "8950 Olympic Blvd, Beverly Hills, CA 90211",
-                phone: "(310) 246-0995",
-                type: "urgent",
-                distance: "0.5 miles"
-            }
+        "390007": [
+    {
+        name: "Bhailal Amin General Hospital",
+        address: "Gorwa Road, Vadodara, Gujarat 390007",
+        phone: "0265 228 6666",
+        type: "hospital",
+        distance: "1.5 km"
+    },
+    {
+        name: "Revive Hospital",
+        address: "Gorwa Refinery Road, Vadodara, Gujarat 390007",
+        phone: "0265 298 1122",
+        type: "urgent",
+        distance: "0.9 km"
+    }
+],
+"Alkapuri": [
+    {
+        name: "Unity Hospital",
+        address: "Alkapuri, RC Dutt Road, Vadodara, Gujarat",
+        phone: "0265 233 0333",
+        type: "hospital",
+        distance: "1.2 km"
+    },
+    {
+        name: "Baroda Heart Institute",
+        address: "RC Dutt Road, Alkapuri, Vadodara, Gujarat",
+        phone: "0265 235 5511",
+        type: "speciality",
+        distance: "0.8 km"
+    }
+],
+"Manjalpur": [
+    {
+        name: "Parul Sevashram Hospital",
+        address: "Manjalpur, Vadodara, Gujarat",
+        phone: "0265 656 0101",
+        type: "hospital",
+        distance: "1.9 km"
+    },
+    {
+        name: "Spandan Multi Speciality Hospital",
+        address: "Manjalpur Main Road, Vadodara, Gujarat",
+        phone: "0265 265 0660",
+        type: "urgent",
+        distance: "1.4 km"
+    }
         ]
     };
     
