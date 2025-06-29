@@ -3,50 +3,805 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symptom Checker</title>
-    <link rel="stylesheet" href="symptom_checker.css">
+    <title>DigiDoc - Enhanced AI Symptom Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --digidoc-primary: #1DD1A1;
+            --digidoc-primary-dark: #17B48A;
+            --digidoc-primary-light: #E6FFF9;
+            --digidoc-secondary: #00D4AA;
+            --digidoc-text: #2D3748;
+            --digidoc-text-light: #718096;
+            --digidoc-white: #FFFFFF;
+            --digidoc-bg: #F7FAFC;
+            --digidoc-border: #E2E8F0;
+            --digidoc-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --digidoc-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --digidoc-warning: #f6ad55;
+            --digidoc-danger: #fc8181;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--digidoc-primary-light) 0%, var(--digidoc-bg) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-        input, button {
-            padding: 10px;
-            margin: 10px;
+
+        .chatbot-container {
+            width: 100%;
+            max-width: 700px;
+            height: 85vh;
+            min-height: 650px;
+            background: var(--digidoc-white);
+            border-radius: 20px;
+            box-shadow: var(--digidoc-shadow-lg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--digidoc-border);
         }
-        #result {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--digidoc-primary) 0%, var(--digidoc-secondary) 100%);
+            padding: 20px;
+            color: var(--digidoc-white);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bot-avatar .avatar-circle {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .bot-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .bot-info p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 0.8rem;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff4444;
+        }
+
+        .status-indicator.connected {
+            background: #44ff44;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            display: flex;
+            flex-direction: column;
+            max-width: 85%;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            align-items: flex-end;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            align-items: flex-start;
+        }
+
+        .message-content {
+            padding: 14px 18px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+
+        .user-message .message-content {
+            background: linear-gradient(135deg, var(--digidoc-primary) 0%, var(--digidoc-secondary) 100%);
+            color: var(--digidoc-white);
+            border-bottom-right-radius: 6px;
+        }
+
+        .bot-message .message-content {
+            background: var(--digidoc-bg);
+            color: var(--digidoc-text);
+            border: 1px solid var(--digidoc-border);
+            border-bottom-left-radius: 6px;
+        }
+
+        .symptom-card {
+            background: var(--digidoc-primary-light);
+            border: 1px solid var(--digidoc-primary);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .urgency-high {
+            background: #fed7d7;
+            border-color: var(--digidoc-danger);
+        }
+
+        .urgency-medium {
+            background: #ffeaa7;
+            border-color: var(--digidoc-warning);
+        }
+
+        .recommendation-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .recommendation-list li {
+            background: rgba(255, 255, 255, 0.7);
+            margin: 5px 0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--digidoc-primary);
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            color: var(--digidoc-text-light);
+            margin-top: 4px;
+            padding: 0 4px;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background: var(--digidoc-white);
+            border-top: 1px solid var(--digidoc-border);
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--digidoc-border);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.2s ease;
+            background: var(--digidoc-bg);
+        }
+
+        #messageInput:focus {
+            border-color: var(--digidoc-primary);
+            background: var(--digidoc-white);
+            box-shadow: 0 0 0 3px rgba(29, 209, 161, 0.1);
+        }
+
+        .send-button {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--digidoc-primary) 0%, var(--digidoc-secondary) 100%);
+            color: var(--digidoc-white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: var(--digidoc-shadow);
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -2px rgba(29, 209, 161, 0.3);
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading-indicator {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background: var(--digidoc-primary-light);
+            margin: 0 20px;
+            border-radius: 15px;
+            border-left: 4px solid var(--digidoc-primary);
+        }
+
+        .loading-indicator.show {
+            display: flex;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .quick-action-btn {
+            background: var(--digidoc-primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-action-btn:hover {
+            background: var(--digidoc-primary-dark);
+            transform: translateY(-1px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-container {
+                height: 90vh;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="chatbot-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="bot-avatar">
+                    <div class="avatar-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bot-info">
+                    <h3>DigiDoc AI Assistant</h3>
+                    <p>Enhanced AI Symptom Assessment</p>
+                    <div class="api-status">
+                        <div class="status-indicator" id="statusIndicator"></div>
+                        <span id="statusText">Checking API...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="symptom-checker">
-        <h2>Symptom Checker</h2>
-        <label for="symptomsSelect">Select your symptoms:</label>
-        <select id="symptomsSelect" multiple>
-            <option value="fever">Fever</option>
-            <option value="headache">Headache</option>
-            <option value="cough">Cough</option>
-            <option value="sore_throat">Sore Throat</option>
-            <option value="fatigue">Fatigue</option>
-            <option value="nausea">Nausea</option>
-            <option value="stomach_pain">Stomach Pain</option>
-            <option value="diarrhea">Diarrhea</option>
-            <option value="cold">Cold</option>
-            <option value="rash">Rash</option>
-            <option value="dizziness">Dizziness</option>
-            <option value="chest_pain">Chest Pain</option>
-            <option value="back_pain">Back Pain</option>
-        </select>
-        <button onclick="checkSelectedSymptoms()">Check Symptoms</button>
-        <div id="result"></div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    <p><strong>Welcome to DigiDoc Enhanced! 👨‍⚕️</strong></p>
+                    <p>I can help assess your symptoms and provide detailed recommendations. Please describe:</p>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>Your main symptoms</li>
+                        <li>How long you've had them</li>
+                        <li>Severity (mild/moderate/severe)</li>
+                        <li>Any other concerns</li>
+                    </ul>
+                    
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="quickSymptom('I have fever and cough')">Fever + Cough</button>
+                        <button class="quick-action-btn" onclick="quickSymptom('I have severe headache')">Headache</button>
+                        <button class="quick-action-btn" onclick="quickSymptom('I feel nauseous and tired')">Nausea + Fatigue</button>
+                    </div>
+                </div>
+                <div class="message-time" id="welcomeTime"></div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="input-wrapper">
+                <input type="text" id="messageInput" placeholder="Describe your symptoms, severity, and duration..." maxlength="800">
+                <button id="sendButton" class="send-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="loading-indicator" id="loadingIndicator">
+            <span>🔍 Analyzing symptoms and generating recommendations...</span>
+        </div>
     </div>
-    
 
-    <script src="symptom_checker.js"></script>
+    <script>
+        console.log('✅ Enhanced DigiDoc loaded successfully!');
+        
+        // API Configuration
+        const API_URL = 'http://127.0.0.1:8000/predict';
+        const HEALTH_URL = 'http://127.0.0.1:8000/health';
+        
+        // Enhanced symptom detection with severity and context
+        const SYMPTOM_KEYWORDS = {
+            'fever': 'fever',
+            'high fever': 'fever',
+            'severe fever': 'fever',
+            'temperature': 'fever',
+            'hot': 'fever',
+            'cough': 'cough',
+            'coughing': 'cough',
+            'dry cough': 'cough',
+            'wet cough': 'cough',
+            'persistent cough': 'cough',
+            'sore throat': 'sore_throat',
+            'throat pain': 'sore_throat',
+            'throat': 'sore_throat',
+            'swollen throat': 'sore_throat',
+            'fatigue': 'fatigue',
+            'tired': 'fatigue',
+            'exhausted': 'fatigue',
+            'weak': 'fatigue',
+            'weakness': 'fatigue',
+            'energy': 'fatigue',
+            'headache': 'headache',
+            'head pain': 'headache',
+            'migraine': 'headache',
+            'severe headache': 'headache',
+            'nausea': 'nausea',
+            'nauseous': 'nausea',
+            'sick': 'nausea',
+            'queasy': 'nausea',
+            'vomiting': 'vomiting',
+            'throw up': 'vomiting',
+            'throwing up': 'vomiting',
+            'vomit': 'vomiting',
+            'diarrhea': 'diarrhea',
+            'loose stool': 'diarrhea',
+            'stomach': 'diarrhea',
+            'bowel': 'diarrhea',
+            'chest pain': 'chest_pain',
+            'chest': 'chest_pain',
+            'chest tight': 'chest_pain',
+            'shortness of breath': 'shortness_of_breath',
+            'breathing': 'shortness_of_breath',
+            'breathless': 'shortness_of_breath',
+            'breath': 'shortness_of_breath',
+            'body pain': 'body_pain',
+            'body ache': 'body_pain',
+            'muscle pain': 'body_pain',
+            'aches': 'body_pain',
+            'joint pain': 'body_pain',
+            'loss of smell': 'loss_of_smell',
+            'smell': 'loss_of_smell',
+            'no smell': 'loss_of_smell',
+            'taste': 'loss_of_smell'
+        };
+        
+        // Severity keywords
+        const SEVERITY_KEYWORDS = {
+            'severe': 'severe',
+            'bad': 'severe',
+            'terrible': 'severe',
+            'awful': 'severe',
+            'intense': 'severe',
+            'extreme': 'severe',
+            'moderate': 'moderate',
+            'medium': 'moderate',
+            'mild': 'mild',
+            'slight': 'mild',
+            'little': 'mild'
+        };
+        
+        // Duration keywords
+        const DURATION_KEYWORDS = {
+            'morning': 'today',
+            'today': 'today',
+            'yesterday': '1-2 days',
+            'days': 'several days',
+            'week': '1 week',
+            'weeks': 'several weeks'
+        };
+        
+        const ALL_SYMPTOMS = [
+            'fever', 'cough', 'sore_throat', 'fatigue', 'headache', 'nausea', 
+            'vomiting', 'diarrhea', 'chest_pain', 'shortness_of_breath', 
+            'body_pain', 'loss_of_smell'
+        ];
+        
+        // Enhanced medical knowledge base
+        const MEDICAL_CONDITIONS = {
+            'Common Cold': {
+                symptoms: ['cough', 'sore_throat', 'fatigue'],
+                recommendations: [
+                    'Rest and stay hydrated',
+                    'Use throat lozenges for sore throat',
+                    'Consider over-the-counter pain relievers',
+                    'Gargle with warm salt water'
+                ],
+                urgency: 'low',
+                description: 'A viral infection affecting the upper respiratory tract'
+            },
+            'Influenza (Flu)': {
+                symptoms: ['fever', 'cough', 'fatigue', 'body_pain', 'headache'],
+                recommendations: [
+                    'Get plenty of rest',
+                    'Stay well hydrated',
+                    'Consider antiviral medication if within 48 hours of onset',
+                    'Monitor fever and seek care if it persists over 3 days',
+                    'Isolate to prevent spread'
+                ],
+                urgency: 'medium',
+                description: 'A viral infection that affects the respiratory system'
+            },
+            'COVID-19': {
+                symptoms: ['fever', 'cough', 'fatigue', 'loss_of_smell', 'shortness_of_breath'],
+                recommendations: [
+                    'Isolate immediately',
+                    'Get tested for COVID-19',
+                    'Monitor oxygen levels if available',
+                    'Seek immediate care if breathing difficulties worsen',
+                    'Contact healthcare provider for guidance'
+                ],
+                urgency: 'high',
+                description: 'Coronavirus infection requiring isolation and monitoring'
+            },
+            'Gastroenteritis': {
+                symptoms: ['nausea', 'vomiting', 'diarrhea', 'fatigue'],
+                recommendations: [
+                    'Stay hydrated with clear fluids',
+                    'Follow BRAT diet (Bananas, Rice, Applesauce, Toast)',
+                    'Avoid dairy and fatty foods',
+                    'Rest and avoid solid foods initially',
+                    'Seek care if severe dehydration occurs'
+                ],
+                urgency: 'medium',
+                description: 'Inflammation of stomach and intestines'
+            }
+        };
+        
+        let messageInput, sendButton, chatMessages, loadingIndicator, statusIndicator, statusText;
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM loaded, initializing enhanced chatbot...');
+            
+            messageInput = document.getElementById('messageInput');
+            sendButton = document.getElementById('sendButton');
+            chatMessages = document.getElementById('chatMessages');
+            loadingIndicator = document.getElementById('loadingIndicator');
+            statusIndicator = document.getElementById('statusIndicator');
+            statusText = document.getElementById('statusText');
+            
+            if (!messageInput || !sendButton) {
+                console.error('❌ Required elements not found!');
+                return;
+            }
+            
+            // Set welcome time
+            const welcomeTime = document.getElementById('welcomeTime');
+            if (welcomeTime) {
+                welcomeTime.textContent = getCurrentTime();
+            }
+            
+            // Event listeners
+            sendButton.addEventListener('click', handleSendMessage);
+            messageInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') handleSendMessage();
+            });
+            messageInput.addEventListener('input', function() {
+                sendButton.disabled = messageInput.value.trim().length === 0;
+            });
+            
+            // Initial state
+            sendButton.disabled = true;
+            messageInput.focus();
+            
+            // Check API health
+            checkAPIHealth();
+            
+            console.log('✅ Enhanced chatbot initialization complete!');
+        });
+        
+        // Quick symptom function
+        function quickSymptom(symptomText) {
+            messageInput.value = symptomText;
+            sendButton.disabled = false;
+            messageInput.focus();
+        }
+        
+        // Check API health
+        async function checkAPIHealth() {
+            try {
+                const response = await fetch(HEALTH_URL);
+                if (response.ok) {
+                    updateStatus(true, 'API Connected');
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                updateStatus(false, 'API Disconnected');
+            }
+        }
+        
+        // Update API status
+        function updateStatus(connected, message) {
+            if (statusIndicator && statusText) {
+                statusIndicator.classList.toggle('connected', connected);
+                statusText.textContent = message;
+            }
+        }
+        
+        // Enhanced message handling
+        async function handleSendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+            
+            messageInput.disabled = true;
+            sendButton.disabled = true;
+            
+            addMessage(message, 'user');
+            messageInput.value = '';
+            loadingIndicator.classList.add('show');
+            
+            try {
+                // Enhanced symptom analysis
+                const analysis = analyzeMessage(message);
+                console.log('🔍 Enhanced analysis:', analysis);
+                
+                if (!analysis.hasSymptoms) {
+                    const response = generateConversationalResponse(message);
+                    addMessage(response, 'bot');
+                } else {
+                    // Generate enhanced assessment
+                    const assessment = generateEnhancedAssessment(analysis);
+                    addMessage(assessment, 'bot');
+                }
+                
+            } catch (error) {
+                console.error('❌ Error:', error);
+                addMessage('❌ Sorry, I encountered an error. Please try again.', 'bot');
+            } finally {
+                loadingIndicator.classList.remove('show');
+                messageInput.disabled = false;
+                sendButton.disabled = false;
+                messageInput.focus();
+            }
+        }
+        
+        // Enhanced message analysis
+        function analyzeMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            const symptoms = {};
+            ALL_SYMPTOMS.forEach(s => symptoms[s] = 0);
+            
+            let severity = 'mild';
+            let duration = 'unknown';
+            let detectedSymptoms = [];
+            
+            // Detect symptoms
+            Object.entries(SYMPTOM_KEYWORDS).forEach(([keyword, symptomKey]) => {
+                if (lowerMessage.includes(keyword)) {
+                    symptoms[symptomKey] = 1;
+                    detectedSymptoms.push(symptomKey);
+                }
+            });
+            
+            // Detect severity
+            Object.entries(SEVERITY_KEYWORDS).forEach(([keyword, level]) => {
+                if (lowerMessage.includes(keyword)) {
+                    severity = level;
+                }
+            });
+            
+            // Detect duration
+            Object.entries(DURATION_KEYWORDS).forEach(([keyword, time]) => {
+                if (lowerMessage.includes(keyword)) {
+                    duration = time;
+                }
+            });
+            
+            return {
+                symptoms,
+                detectedSymptoms,
+                severity,
+                duration,
+                hasSymptoms: detectedSymptoms.length > 0,
+                originalMessage: message
+            };
+        }
+        
+        // Generate conversational response for non-symptom messages
+        function generateConversationalResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('suggest') || lowerMessage.includes('recommend') || lowerMessage.includes('what')) {
+                return `I'd be happy to help with recommendations! However, I need to know your specific symptoms first. Please tell me:
+                
+                <div class="symptom-card">
+                <strong>📋 What symptoms are you experiencing?</strong><br>
+                Examples: fever, cough, headache, nausea, fatigue, etc.
+                </div>
+                
+                <div class="symptom-card">
+                <strong>⏱️ How long have you had them?</strong><br>
+                Examples: since this morning, for 2 days, since yesterday
+                </div>
+                
+                <div class="symptom-card">
+                <strong>📊 How severe are they?</strong><br>
+                Examples: mild, moderate, severe
+                </div>`;
+            }
+            
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                return `Hello! I'm here to help assess your symptoms. Please describe what you're experiencing, including severity and duration.`;
+            }
+            
+            return `I couldn't identify specific symptoms in your message. Please describe your symptoms clearly, for example:
+            
+            <div class="quick-actions">
+                <button class="quick-action-btn" onclick="quickSymptom('I have severe fever and cough since morning')">Fever + Cough</button>
+                <button class="quick-action-btn" onclick="quickSymptom('I have moderate headache for 2 days')">Headache</button>
+            </div>`;
+        }
+        
+        // Generate enhanced medical assessment
+        function generateEnhancedAssessment(analysis) {
+            const { symptoms, detectedSymptoms, severity, duration } = analysis;
+            
+            // Find matching condition
+            let bestMatch = null;
+            let bestScore = 0;
+            
+            Object.entries(MEDICAL_CONDITIONS).forEach(([condition, data]) => {
+                const matchScore = data.symptoms.filter(s => detectedSymptoms.includes(s)).length;
+                if (matchScore > bestScore) {
+                    bestScore = matchScore;
+                    bestMatch = { name: condition, ...data };
+                }
+            });
+            
+            if (!bestMatch) {
+                bestMatch = {
+                    name: 'General Symptoms',
+                    description: 'Multiple symptoms requiring assessment',
+                    recommendations: [
+                        'Monitor your symptoms closely',
+                        'Stay hydrated and get rest',
+                        'Contact healthcare provider if symptoms worsen'
+                    ],
+                    urgency: 'medium'
+                };
+            }
+            
+            // Generate response
+            const symptomList = detectedSymptoms.map(s => s.replace('_', ' ')).join(', ');
+            const urgencyClass = bestMatch.urgency === 'high' ? 'urgency-high' : 
+                               bestMatch.urgency === 'medium' ? 'urgency-medium' : '';
+            
+            let response = `<div class="symptom-card ${urgencyClass}">
+                <strong>📋 Symptoms Analysis</strong><br>
+                <strong>Detected:</strong> ${symptomList}<br>
+                <strong>Severity:</strong> ${severity.charAt(0).toUpperCase() + severity.slice(1)}<br>
+                <strong>Duration:</strong> ${duration}<br><br>
+                
+                <strong>🔍 Assessment: ${bestMatch.name}</strong><br>
+                ${bestMatch.description}
+            </div>`;
+            
+            response += `<div class="symptom-card">
+                <strong>💡 Recommendations:</strong>
+                <ul class="recommendation-list">`;
+            
+            bestMatch.recommendations.forEach(rec => {
+                response += `<li>${rec}</li>`;
+            });
+            
+            response += `</ul></div>`;
+            
+            // Add urgency-based warnings
+            if (bestMatch.urgency === 'high' || severity === 'severe') {
+                response += `<div class="symptom-card urgency-high">
+                    <strong>⚠️ Important:</strong> Based on your symptoms, consider seeking medical attention promptly. This assessment is for informational purposes and should not replace professional medical advice.
+                </div>`;
+            } else {
+                response += `<div class="symptom-card">
+                    <strong>ℹ️ Disclaimer:</strong> This is a preliminary assessment. Please consult a healthcare provider for proper diagnosis and treatment, especially if symptoms persist or worsen.
+                </div>`;
+            }
+            
+            return response;
+        }
+        
+        // Add message to chat
+        function addMessage(content, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            
+            if (sender === 'bot') {
+                messageContent.innerHTML = content;
+            } else {
+                messageContent.textContent = content;
+            }
+            
+            const messageTime = document.createElement('div');
+            messageTime.className = 'message-time';
+            messageTime.textContent = getCurrentTime();
+            
+            messageDiv.appendChild(messageContent);
+            messageDiv.appendChild(messageTime);
+            chatMessages.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 100);
+        }
+        
+        // Get current time
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString([], { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+        }
+    </script>
 </body>
 </html>
