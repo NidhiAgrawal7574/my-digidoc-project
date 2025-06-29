@@ -67,72 +67,124 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Hospital Finder
-    const hospitalDatabase = {
-        "390001": [
-            {
-                name: "S.G. Hospital",
-        address: "Lalbaug Road, Manjalpur, Vadodara, Gujarat 390001",
-        phone: "0265 232 5555",
-        type: "hospital",
-        distance: "1.1 km"
-    },
-    {
-        name: "Sterling Hospital",
-        address: "Race Course Circle, Vadodara, Gujarat 390001",
-        phone: "0265 222 4200",
-        type: "hospital",
-        distance: "2.3 km"
-            }
-        ],
-        "390007": [
-    {
-        name: "Bhailal Amin General Hospital",
-        address: "Gorwa Road, Vadodara, Gujarat 390007",
-        phone: "0265 228 6666",
-        type: "hospital",
-        distance: "1.5 km"
-    },
-    {
-        name: "Revive Hospital",
-        address: "Gorwa Refinery Road, Vadodara, Gujarat 390007",
-        phone: "0265 298 1122",
-        type: "urgent",
-        distance: "0.9 km"
-    }
-],
-"Alkapuri": [
-    {
-        name: "Unity Hospital",
-        address: "Alkapuri, RC Dutt Road, Vadodara, Gujarat",
-        phone: "0265 233 0333",
-        type: "hospital",
-        distance: "1.2 km"
-    },
-    {
-        name: "Baroda Heart Institute",
-        address: "RC Dutt Road, Alkapuri, Vadodara, Gujarat",
-        phone: "0265 235 5511",
-        type: "speciality",
-        distance: "0.8 km"
-    }
-],
-"Manjalpur": [
-    {
-        name: "Parul Sevashram Hospital",
-        address: "Manjalpur, Vadodara, Gujarat",
-        phone: "0265 656 0101",
-        type: "hospital",
-        distance: "1.9 km"
-    },
-    {
-        name: "Spandan Multi Speciality Hospital",
-        address: "Manjalpur Main Road, Vadodara, Gujarat",
-        phone: "0265 265 0660",
-        type: "urgent",
-        distance: "1.4 km"
-    }
-        ]
-    };
+    // Hospital Finder ‑ Vadodara‑only database
+const hospitalDatabase = {
+    /* Central city PIN code */
+    "390001": [
+        {
+            name: "S.G. Hospital",
+            address: "Lalbaug Road, Manjalpur, Vadodara 390001",
+            phone: "0265 232 5555",
+            type: "hospital",
+            distance: "1.1 km"
+        },
+        {
+            name: "Sterling Hospital",
+            address: "Race Course Circle, Vadodara 390001",
+            phone: "0265 222 4200",
+            type: "hospital",
+            distance: "2.3 km"
+        },
+        {
+            name: "Sumandeep Emergency Care",
+            address: "Near Parivar Char Rasta, Vadodara 390001",
+            phone: "0265 223 3300",
+            type: "urgent",
+            distance: "1.8 km"
+        }
+    ],
+
+    /* Gorwa / IPCL area */
+    "390007": [
+        {
+            name: "Bhailal Amin General Hospital",
+            address: "Gorwa Road, Vadodara 390007",
+            phone: "0265 228 6666",
+            type: "hospital",
+            distance: "1.5 km"
+        },
+        {
+            name: "Revive Multispeciality Hospital",
+            address: "Gorwa Refinery Road, Vadodara 390007",
+            phone: "0265 298 1122",
+            type: "urgent",
+            distance: "0.9 km"
+        }
+    ],
+
+    /* Gotri / Sevasi belt */
+    "390021": [
+        {
+            name: "Shreeji Hospital",
+            address: "Gotri‑Sevasi Road, Vadodara 390021",
+            phone: "0265 297 5555",
+            type: "hospital",
+            distance: "1.0 km"
+        },
+        {
+            name: "Aadicura Superspeciality Hospital",
+            address: "Gotri, Vadodara 390021",
+            phone: "0265 671 0101",
+            type: "hospital",
+            distance: "2.2 km"
+        }
+    ],
+
+    /* Alkapuri (commercial hub) */
+    "Alkapuri": [
+        {
+            name: "Unity Hospital",
+            address: "RC Dutt Road, Alkapuri, Vadodara",
+            phone: "0265 233 0333",
+            type: "hospital",
+            distance: "1.2 km"
+        },
+        {
+            name: "Baroda Heart Institute & Research Centre",
+            address: "RC Dutt Road, Alkapuri, Vadodara",
+            phone: "0265 235 5511",
+            type: "speciality",
+            distance: "0.8 km"
+        }
+    ],
+
+    /* Manjalpur & Makarpura industrial zone */
+    "Manjalpur": [
+        {
+            name: "Parul Sevashram Hospital",
+            address: "Manjalpur Ring Road, Vadodara",
+            phone: "0265 656 0101",
+            type: "hospital",
+            distance: "1.9 km"
+        },
+        {
+            name: "Spandan Multispeciality Hospital",
+            address: "Manjalpur Main Road, Vadodara",
+            phone: "0265 265 0660",
+            type: "urgent",
+            distance: "1.4 km"
+        }
+    ],
+
+    /* Karelibaug / Sama area */
+    "390018": [
+        {
+            name: "Medistar Hospital",
+            address: "Sama‑Savli Road, Vadodara 390018",
+            phone: "0265 298 2000",
+            type: "hospital",
+            distance: "1.6 km"
+        },
+        {
+            name: "Sunshine Global Hospital",
+            address: "Karelibaug, Vadodara 390018",
+            phone: "0265 229 5000",
+            type: "hospital",
+            distance: "2.0 km"
+        }
+    ]
+};
+
     
     // Find Hospitals Button Click
     const findHospitalsBtn = document.getElementById('find-hospitals-btn');
